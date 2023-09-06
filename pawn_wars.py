@@ -16,7 +16,7 @@ def move_pawn(pawn, row, col, colour):
         plus_one_minus_one *= -1
 
     if enemy_pawn["row_idx"]:
-        quit(print(f"Game over! {colour} win, capture on {chr(97 + enemy_pawn['col_idx'])}{8 - one_row_forward}."))
+        quit(print(f"Game over! {colour} win, capture on {chr(97 + enemy_pawn['col_idx'])}{8 - enemy_pawn['row_idx']}."))
 
     chess_board[one_row_forward][col], chess_board[row][col] = pawn, "-"
 
