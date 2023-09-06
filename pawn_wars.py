@@ -23,6 +23,7 @@ def move_pawn(pawn, row, col, colour):
 def main(last_played="b"):
     for i in range(64):
         row, col = divmod(i, 8)
+        
         if chess_board[row][col] in "wb" and chess_board[row][col] != last_played:
             pawn = chess_board[row][col]
             colour = "White" if chess_board[row][col] == "w" else "Black"
