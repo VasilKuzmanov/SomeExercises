@@ -19,6 +19,7 @@ def move_pawn(pawn, row, col, colour):
         quit(print(f"Game over! {colour} win, capture on {chr(97 + enemy_pawn['col_idx'])}{8 - one_row_forward}."))
 
     chess_board[one_row_forward][col], chess_board[row][col] = pawn, "-"
+    
 
 def main(last_played="b"):
     for i in range(64):
