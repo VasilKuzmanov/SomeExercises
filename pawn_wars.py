@@ -5,20 +5,16 @@ def check_if_pawn_becomes_a_queen(pawn, row, col, colour):
 
 def move_pawn(pawn, row, col, colour):
     one_row_forward = row - 1 if pawn == "w" else row + 1
-    enemy_pawn = {"row_idx": None, "col_idx": None}
     plus_one_minus_one = 1
+    chess_board[row][col] = "-"
 
     for _ in range(2):
         if chess_board[one_row_forward][col + plus_one_minus_one] != "-":
-            enemy_pawn["row_idx"] = one_row_forward
-            enemy_pawn["col_idx"] = col + plus_one_minus_one
+            quit(print(f"Game over! {colour} win, capture on {chr(97 + col + plus_one_minus_one)}{8 - one_row_forward}."))
 
         plus_one_minus_one *= -1
 
-    if enemy_pawn["row_idx"]:
-        quit(print(f"Game over! {colour} win, capture on {chr(97 + enemy_pawn['col_idx'])}{8 - enemy_pawn['row_idx']}."))
-
-    chess_board[one_row_forward][col], chess_board[row][col] = pawn, "-"
+    chess_board[one_row_forward][col] = pawn
 
 
 def main(last_played="b"):
