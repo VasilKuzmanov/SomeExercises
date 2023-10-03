@@ -2,11 +2,11 @@ CREATE TABLE chessboard(
     colour CHAR,
     col_letter CHAR,
     col_number SMALLINT,
-    row_number SMALLINT
+    "row_number" SMALLINT
 );
  
 -- The input data in format:
-INSERT INTO chessboard (colour, col_letter, row_number)
+INSERT INTO chessboard (colour, col_letter, "row_number")
 VALUES
     ('w', 'A', 2),
     ('b', 'B', 4);
@@ -18,9 +18,9 @@ SET col_number = ABS(64 -  ASCII(col_letter));
 DO $$
 DECLARE
     col_number_w SMALLINT := (SELECT col_number FROM chessboard WHERE colour = 'w');
-    row_number_w SMALLINT := (SELECT row_number FROM chessboard WHERE colour = 'w');
+    row_number_w SMALLINT := (SELECT "row_number" FROM chessboard WHERE colour = 'w');
     col_number_b SMALLINT := (SELECT col_number FROM chessboard WHERE colour = 'b');
-    row_number_b SMALLINT := (SELECT row_number FROM chessboard WHERE colour = 'b');
+    row_number_b SMALLINT := (SELECT "row_number" FROM chessboard WHERE colour = 'b');
 BEGIN
     WHILE TRUE LOOP
         IF row_number_w = 8 THEN
