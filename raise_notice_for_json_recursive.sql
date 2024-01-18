@@ -19,3 +19,16 @@ $$ LANGUAGE plpgsql;
 
 
 SELECT raise_notice_for_json_recursive('{"name": "John", "age": "30", "address": {"city": "New York", "zip": "10001"}}');
+
+
+DO $$
+
+DECLARE 
+    record JSONB := '{"name": "John", "age": "30", "address": {"city": ["New York", "London"], "zip": "10001"}}';
+    city_value TEXT;
+BEGIN
+
+    city_value := record -> 'address' -> 'city' ->> 1;
+
+    RAISE NOTICE 'City: %', city_value;
+END $$;
